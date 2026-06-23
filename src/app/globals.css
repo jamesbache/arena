@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --brand-green: #008a00;
+  --brand-green-hover: #007000;
+  --brand-red: #df2020;
+  --brand-light-red: #fff5f5;
+  --brand-bg: #f4f5f8;
+  --brand-card-bg: #ffffff;
+  --brand-text: #111827;
+  --brand-text-muted: #6b7280;
+  --brand-border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-green); }
+
+/* ─── Category badge colors (light theme) ───────────────── */
+.badge-vip {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+}
+
+.badge-cat1 {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  border: 1px solid #6366f1;
+}
+
+.badge-cat2 {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #22c55e;
+}
+
+.badge-cat3 {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+/* ─── Modal animations ──────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-backdrop {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.modal-content {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Match list rows ───────────────────────────────────── */
+.viagogo-row {
+  display: flex;
+  background: var(--brand-card-bg);
+  border-bottom: 1px solid var(--brand-border);
+  padding: 1.25rem;
+  align-items: center;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.viagogo-row:hover {
+  background-color: #fafbfc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.viagogo-row:last-child {
+  border-bottom: none;
+}
+
+/* ─── Date block ────────────────────────────────────────── */
+.date-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 75px;
+  border-right: 1px solid var(--brand-border);
+  padding-right: 1.25rem;
+  margin-right: 1.25rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.date-block-month {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--brand-green);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.date-block-day {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand-text);
+  line-height: 1;
+}
+
+.date-block-weekday {
+  font-size: 11px;
+  color: var(--brand-text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Interactive stadium seating map styles ─────────────── */
+.stadium-svg-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+
+.stadium-section {
+  cursor: pointer;
+  transition: fill 0.2s, opacity 0.2s;
+}
+
+.stadium-section:hover {
+  opacity: 0.85;
+}
+
+/* ─── Floating Price Tags on Seating Map ─────────────────── */
+.map-price-tag {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: var(--font-inter);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  z-index: 10;
+}
+
+.map-price-tag:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  border-color: var(--brand-green);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.map-price-tag-value {
+  color: #111827;
+  display: block;
+  line-height: 1.1;
+}
+
+.map-price-tag-count {
+  color: #df2020;
+  font-size: 8px;
+  display: block;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+/* ─── Management inputs ───────────────────────────────────── */
+.mgmt-input-light {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: var(--font-inter);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  outline: none;
+}
+
+.mgmt-input-light:focus {
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 3px rgba(0, 138, 0, 0.12);
+}
+
+/* ─── QR visual ─────────────────────────────────────────── */
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 2px;
+  width: 90px;
+  height: 90px;
+}
+
+.qr-cell {
+  border-radius: 1px;
+}
