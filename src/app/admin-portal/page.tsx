@@ -52,7 +52,7 @@ export default function ManagementPage() {
     try {
       const payload: TicketsData = {
         cryptoWalletAddress: walletAddress,
-        tickets: tickets.map(({ _dirty, ...t }) => t),
+        tickets: tickets.map(t => { const clean = { ...t }; delete clean._dirty; return clean; }),
       };
       const res = await fetch('/api/tickets', {
         method: 'POST',
@@ -243,7 +243,7 @@ export default function ManagementPage() {
                               min={0} step={50} placeholder="—"
                             />
                           </div>
-                          <p className="text-[8px] text-slate-400 mt-1 text-center">(shown as "from" price)</p>
+                          <p className="text-[8px] text-slate-400 mt-1 text-center">(shown as &quot;from&quot; price)</p>
                         </td>
                       </tr>
                     ))}

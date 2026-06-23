@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import Link from 'next/link';
 import PaymentModal from '@/components/PaymentModal';
 import { Ticket, TicketsData } from '@/app/api/tickets/route';
 
